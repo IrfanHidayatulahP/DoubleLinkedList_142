@@ -19,8 +19,6 @@ public:
 	bool search(int rollNo, Node** previous, Node** current);
 	bool deleteNode(int rollNo);
 	bool listEmpty();
-	void ascending();
-	void Descending();
 	void traverse();
 	void revtraverse();
 	void hapus();
@@ -106,7 +104,7 @@ bool DoubleLinkedList :: listEmpty() {
 	return (START == NULL);
 }
 
-void DoubleLinkedList :: ascending() {
+void DoubleLinkedList :: traverse() {
 	if (listEmpty())
 		cout << "\nList is Empty" << endl;
 	else {
@@ -119,7 +117,7 @@ void DoubleLinkedList :: ascending() {
 	}
 }
 
-void DoubleLinkedList::Descending() {
+void DoubleLinkedList::revtraverse() {
 	if (listEmpty())
 		cout << "\nList is Empty" << endl;
 	else {
@@ -169,10 +167,10 @@ int main() {
 					cout << "Record with Roll number" << rollNo << "Deleted" << endl;
 				break;
 			case '3':
-				obj.ascending();
+				obj.traverse();
 				break;
 			case '4':
-				obj.Descending();
+				obj.revtraverse();
 				break;
 			case'5':
 				if (obj.listEmpty() == true) {
