@@ -135,10 +135,72 @@ void DoubleLinkedList::Descending() {
 	}
 }
 
-
-
-
-
 int main() {
+	DoubleLinkedList obj;
+	while (true) {
+		try {
+			cout << "\nMenu" << endl;
+			cout << "1. Add a Record to the List" << endl;
+			cout << "2. Delete a Record from the List" << endl;
+			cout << "3. View All Record in the Ascending order of Roll Number" << endl;
+			cout << "4. View All Record in the Descending order of Roll Number" << endl;
+			cout << "5. Search for a Record in the List" << endl;
+			cout << "6. Exit" << endl;
+			cout << "\nEnter your Choice (1-6): ";
+			char ch;
+			cin >> ch;
 
+			switch (ch) {
+			case '1':
+				obj.addNode();
+				break;
+			case '2':
+				if (obj.listEmpty()) {
+					cout << "\nList is Empty" << endl;
+					break;
+				}
+				cout << "\nEnter the roll number of the student whose record is to be deleted: ";
+				int rollNo;
+				cin >> rollNo;
+				cout << endl;
+				if (obj.deleteNode(rollNo) == false)
+					cout << "Record not Found" << endl;
+				else
+					cout << "Record with Roll number" << rollNo << "Deleted" << endl;
+				break;
+			case '3':
+				obj.ascending();
+				break;
+			case '4':
+				obj.Descending();
+				break;
+			case'5':
+				if (obj.listEmpty() == true) {
+					cout << "\nList is Empty" << endl;
+					break;
+				}
+				Node* prev, * curr;
+				prev = curr = NULL;
+				cout << "\nEnter the roll number of the student whose record you want to search: ";
+				int num;
+				cin >> num;
+				if (obj.search(num, &prev, &curr) == false)
+					cout << "\nRecord not Found" << endl;
+				else {
+					cout << "\nRecord Found" << endl;
+					cout << "\nRoll Number: " << curr->noMhs << endl;
+					cout << "\nName: " << curr->name << endl;
+				}
+				break;
+			case '6':
+				return 0;
+			default:
+				cout << "Invalid Option" << endl;
+				break;
+			}
+		}
+		catch (exception& e) {
+			cout << "Check for the Values Entered." << endl;
+		}
+	}
 }
